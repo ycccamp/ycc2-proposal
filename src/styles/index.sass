@@ -20,6 +20,7 @@ body
   min-height: 100vh
   color: #333
   font-size: 18.5px
+  overflow-x: hidden
 
   @include fonts.default
 
@@ -51,3 +52,6 @@ table
 
   td:not(:last-child), th:not(:last-child)
     border-right: 1px solid #d6d6d6
+
+.table-container
+  overflow-y: scroll
