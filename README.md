@@ -1,12 +1,6 @@
-# Phoomparin's Homework for YWC17 Interview, Programming Major.
+# Young Creator's Camp 2 - Sponsorship Proposal Website
 
-![](src/images/og-thumbnail.png)
-
-การบ้านสำหรับสัมภาษณ์ YWC17 สาขาโปรแกรมมิ่ง ของภูมิปรินทร์ มะโน
-
-**Website Link:** [https://phoomparin.github.io/ywc17-homework](phoomparin.github.io/ywc17-homework)
-
-## เทคโนโลยีที่ใช้: Tech Stack and Tooling
+## Tech Stack and Tooling
 
 - **Pug**: Markup Language
 - **Sass**: Styling Language
