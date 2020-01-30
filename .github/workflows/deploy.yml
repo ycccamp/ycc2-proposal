@@ -1,14 +1,43 @@
-name: deploy
+name: Deployment
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
+
+  deploy:
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v1
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
+      - uses: actions/checkout@v1
+      - name: 'Init: Summon NodeJS'
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: "Cache: node_modules"
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-${{ env.cache-name }}-
+            ${{ runner.OS }}-node-
+      - name: 'Init: Install yarn'
+        run: |
+          curl -o- -L https://yarnpkg.com/install.sh | bash
+      - name: 'Init: Install dependencies'
+        run: |
+          yarn install
+      - name: "Build: Build sites"
+        run: |
+          yarn build
+      - name: "Deploy: Upload to Firebase"
+        env:
+          FIREBASE_DEPLOY_KEY: ${{ secrets.FIREBASE_DEPLOY_KEY }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        run: |
+          yarn firebase deploy -m "Automatic deployment from GitHub Actions" --non-interactive --token $FIREBASE_DEPLOY_KEY --project $FIREBASE_PROJECT_ID
