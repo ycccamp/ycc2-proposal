@@ -1,0 +1,28 @@
+doctype html
+html(lang='th-TH')
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    meta(property="og:url", content="https://proposal.ycc.in.th")
+    meta(property="og:type", content="website")
+    meta(property="og:title", content="Sponsorship Proposal - Young Creator's Camp 2")
+    meta(property="og:description", content="ร่วมสนับสนุนค่ายนักสร้างรุ่นเยาว์ Young Creator's Camp 2")
+    meta(property="og:image", content="../images/backdrop.png")
+    meta(property="title", content="Sponsorship Proposal - Young Creator's Camp 2")
+    meta(property="description", content="ร่วมสนับสนุนค่ายนักสร้างรุ่นเยาว์ Young Creator's Camp 2")
+    meta(property="image", content="../images/backdrop.png")
+
+    link(rel="shortcut icon", href="../../static/favicon.ico")
+    link(rel="apple-touch-icon-precomposed", href="../../static/favicon.ico")
+    link(rel='stylesheet', href='../styles/index.sass')
+    link(href="https://fonts.googleapis.com/css?family=Kanit|Roboto|Sarabun&display=swap", rel="stylesheet")
+
+    title Sponsorship Proposal - Young Creator's Camp 2
+  body
+    main.container
+      img.hero-logo(src="../images/full-logo.png")
+      .text-container
+        include:markdown-it ../content/Proposal.md
+    script(src='../scripts/index.ts')

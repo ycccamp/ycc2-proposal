@@ -12,7 +12,7 @@ function wrapTable() {
 }
 
 async function onReady() {
-  wrapTable()
+  // wrapTable()
 }
 
 document.addEventListener('DOMContentLoaded', onReady)
